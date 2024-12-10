@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>category</title>
+</head>
+<body>
+    <h1>CAFE YY</h1>
+    <h3>カテゴリー</h3>
+    <h5>コーヒー<br />お茶<br />ソフトドリンク</h5>
+
+    <p>カテゴリーを入力してください。</p>
+    <form id="categoryForm">
+        <input id="category" type="text">
+        <button type="button" onclick="goToDrinkPage()">入力</button>
+
+        <!--<button location.href='./HTMLPage3.html'>入力</button>-->
+    </form>
+
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get('name');
+
+        function goToDrinkPage(evnet) {
+            event.preventDefault();
+            const category = document.getElementById('category').value
+
+            //location.href = `./HTMLPage3.html?category=${encodeURIComponent(category)}`;
+            console.log(category);
+            //location.href = `http://localhost:3000/category/${category}`;
+            location.href = `HTMLPage3.html?name=${encodeURIComponent(name)}&category=${encodeURIComponent(category)}`;
+        }
+
+
+
+    </script>
+
+</body>
+</html>

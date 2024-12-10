@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>category</title>
+</head>
+<body>
+    <h1>CAFE YY</h1>
+
+
+    <div style="border: 1px solid black; padding :10px;">
+        <h3>飲み物リスト</h3>
+        <p id="drinkList"></p>
+    </div>
+
+
+
+    <p>飲み物を入力してください。</p>
+    <input id="drink" type="text">
+    <button onclick="getName()">入力</button>
+
+    <h3 id="selectDone"></h3>
+
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const selectedCategory = params.get('category');
+        const name = params.get('name');
+        console.log(selectedCategory);
+        console.log(name);
+
+
+        fetch(`http://localhost:3000/category/${selectedCategory}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data.drinks)
+                document.getElementById('drinkList').innerHTML = data.drinks;
+            });
+
+
+
+        function getName() {
+            const drink = document.getElementById('drink').value;
+            console.log("飲み物：", drink);
+
+            document.getElementById('selectDone').innerHTML = `${name}さん、ご注文ありがとうございます。<br>${drink} の注文が完了しました。` ;
+        }
+
+
+
+    </script>
+
+
+
+</body>
+</html>

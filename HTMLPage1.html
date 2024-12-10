@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Cafe YY 名前入力</title>
+</head>
+<body>
+    <h1>CAFE YY</h1>
+    <p>名前を入力してください。</p>
+    <form onsubmit="saveNameAndNevigate(event)">
+        <input id="name" type="text">
+        <button type="submit">入力</button>
+    </form>
+
+    <script>
+        function saveNameAndNevigate(event) {
+            event.preventDefault(); // prevent from sending from
+            const name = document.getElementById("name").value;
+            console.log(name);
+            const nextPageUrl = `./HTMLPage2.html?name=${encodeURIComponent(name)}`;
+            location.href = nextPageUrl;
+
+        }
+
+
+    </script>
+   
+
+
+</body>
+</html>
